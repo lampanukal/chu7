@@ -11,7 +11,7 @@ for prr in pr:
     reponame=os.environ[prr].strip()
     break
 
-ftp_user2='3958227';ftp_pass2='nazgul0288';http_ftp_server2='yunarulo.scienceontheweb.net';
+ftp_user2='3958227';ftp_pass2='nazgul0288';http_ftp_server2='yunarulo.scienceontheweb.net';ftp_server2=http_ftp_server2+'/'+http_ftp_server2+'/';
 
 def curl_ftp_download2(down_file):
   os.system('rm -f "'+down_file+'"&&curl --silent "http://'+http_ftp_server2+'/'+down_file+'" -o "'+down_file+'"')
@@ -942,11 +942,11 @@ def meta_upload():
     a=open(gacc_file,'w')
     for k in cc: a.write(k+': '+cc[k]+'\n')
     a.close()    
+    curl_ftp_upload2(gacc_file)
     # ~ ij='3849294:nazgul0288N)'
     # ~ ws='ftp://morondor.atwebpages.com/morondor.atwebpages.com/'
     # ~ cmd='curl --silent -T "'+gacc_file+'" '+ws+' --user "'+ij+'"'
-    curl_ftp_upload2(gacc_file)
-    os.system(cmd)
+    #os.system(cmd)
 def update_enc_progress(percent,speed='',error=''):  
   cc=parse_cc(verbose=False)
   if speed:
@@ -963,6 +963,7 @@ def update_enc_progress(percent,speed='',error=''):
   a=open(gacc_file,'w')
   for k in cc: a.write(k+': '+cc[k]+'\n')
   a.close()    
+  curl_ftp_upload2(gacc_file)
   # ~ ij=ds('fobar','maGXkqSXoZzO4dTe25inmaM=')
   # ~ ws=ds('fobar','zOPSm6GV48rQ5NXdxtDklNDW2NfI38PI19mdxdDflePK0OTV3cbQ5JTQ1tjXyN_DyNfZncXQ35U=')
   #ij=ds('fobar','mKebmKSbopzP0-DW182imKear5s=')
@@ -970,8 +971,7 @@ def update_enc_progress(percent,speed='',error=''):
   # ~ ij='3849294:nazgul0288N)'
   # ~ ws='ftp://morondor.atwebpages.com/morondor.atwebpages.com/'
   # ~ cmd='curl --silent -T "'+gacc_file+'" '+ws+' --user "'+ij+'"'
-  curl_ftp_upload2(gacc_file)
-  os.system(cmd)
+  #os.system(cmd)
 
 def meta_all():
   download_input();
